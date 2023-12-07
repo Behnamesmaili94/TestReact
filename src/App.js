@@ -6,15 +6,18 @@ import NoPage from "./NoPage";
 
 class App extends Component {
 
-  // constructor(props) {
-  //   super(props)
+   constructor(props) {
+     super(props)
     
-  // }
+   }
+   state={
+    id:0
+   }
   
   render() {
     return (
       <div>
-        {<Home/>}
+        {<Home key={this.state.id} route="Home in App"/>}
       </div>
     )
   }

@@ -6,20 +6,6 @@ class Home extends Component{
         super(props);
     }
     
-    state = {
-        logedTime: 3,
-        id:0
-    }
-
-    indead =()=>{
-        let id =[]
-
-        for (let index = 0; index <4; index++) {
-            id.push(index)
-            
-        }
-        return(id.map((event)=><p>{event}</p>))
-    }
 
     render(){
         return(
@@ -28,18 +14,10 @@ class Home extends Component{
                 <h1 className="text-3xl">Home</h1>
             </div>
                
-            <div className='col-start-1 row-start-2'>
-                <p>{this.props.name}</p>
-                <hr/>
-                <h3>{this.state.logedTime}</h3>
-            
+            <div className='col-start-3 row-start-4'>
+                {this.props.route}
             </div>
 
-            <div className='col-start-2 row-start-3'>
-                {this.indead()}
-                <button className='bg-[#1da1f2] text-white ...' onClick={()=>{this.setState({logedTime:"changed"})}}>click for update time</button>
-                
-            </div>
             
         </div>
         
