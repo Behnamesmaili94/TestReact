@@ -7,9 +7,10 @@ class Home extends Component{
     }
     
     state = {
-        logedTime: 3
+        logedTime: 3,
+        id:0
     }
-    
+
     indead =()=>{
         let id =[]
 
