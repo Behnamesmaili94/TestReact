@@ -4,7 +4,10 @@ class Home extends Component{
 
     constructor(props){
         super(props);
-        this.state = {logedTime: 3}
+    }
+    
+    state = {
+        logedTime: 3
     }
     
     indead =()=>{
