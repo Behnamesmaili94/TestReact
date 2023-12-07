@@ -19,13 +19,12 @@ class App extends Component {
   
  
   render() {
-    const listPerson = ()=>{
-      return this.state.person
-    }
+    const {person} = this.state
+    
     return (
       <div>
         
-        {<Home key={this.state.id} data={this.listPerson}/>}
+        {<Home key={this.state.id} data={person}/>}
       </div>
     )
   }
