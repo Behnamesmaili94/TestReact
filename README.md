@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=Behnamesmaili94)](https://github.com/ryo-ma/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=Behnamesmaili94&row=2&column=3)](https://github.com/ryo-ma/github-profile-trophy)
+
 ### `npm start`
 
 Runs the app in the development mode.\
