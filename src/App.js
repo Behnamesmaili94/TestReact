@@ -1,8 +1,5 @@
 import {Component} from 'react';
-import Home from "./Home";
-import Blogs from "./Blog";
-import Contact from "./Contact";
-import NoPage from "./NoPage";
+import Home from "./Component/Home";
 
 class App extends Component {
 
@@ -10,14 +7,25 @@ class App extends Component {
      super(props)
     
    }
+
    state={
-    id:0
-   }
+    
+    person:[
+        {id:0,name:"behnam",family:"esmaili",age:25},
+        {id:1,name:"behzad",family:"esmaili",age:23},
+        {id:2,name:"moslem",family:"sarhady",age:25},
+    ]
+  }
   
+ 
   render() {
+    const listPerson = ()=>{
+      return this.state.person
+    }
     return (
       <div>
-        {<Home key={this.state.id} route="Home in App"/>}
+        
+        {<Home key={this.state.id} data={this.listPerson}/>}
       </div>
     )
   }
