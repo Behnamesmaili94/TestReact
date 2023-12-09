@@ -25,6 +25,7 @@ class App extends Component {
     const {person ,id} = this.state
     const personShow = this.state.showPersons
 
+    
     return (
       <div>
 
