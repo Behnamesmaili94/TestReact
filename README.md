@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+[![trophy](https://github-profile-trophy.vercel.app/?username=Behnamesmaili94&row=2&column=3)](https://github.com/ryo-ma/github-profile-trophy)
 
 ### `npm start`
 
