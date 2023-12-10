@@ -33,7 +33,7 @@ class App extends Component {
         const bottonStyle = {
             padding: "1em",
             fontFamily: "BYekan",
-            backgroundColor: "pink"
+            backgroundColor: "green"
         };
 
         let person = null;
