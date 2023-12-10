@@ -4,9 +4,9 @@ import Persons from "./Component/Person/Persons";
 class App extends Component {
     state = {
         persons: [
-            { firstname: "یونس", lastname: "قربانی" },
-            { firstname: "ایمان", lastname: "مدائنی" },
-            { firstname: "سجاد", lastname: "باقرزاده" }
+            { id:0, firstname: "یونس", lastname: "قربانی" },
+            { id:1, firstname: "ایمان", lastname: "مدائنی" },
+            { id:2, firstname: "سجاد", lastname: "باقرزاده" }
         ],
         showPersons: false
     };
@@ -15,6 +15,12 @@ class App extends Component {
         this.setState({ showPersons: !this.state.showPersons });
         // console.log(this.state.showPersons);
     };
+    
+    deletePerson = id =>{
+        const ePersons = [...this.state.persons]
+        const fP = ePersons.filter(p => p.id !== id)
+        this.setState({persons :fP})
+    }
 
     render() {
         const { persons, showPersons } = this.state;
@@ -33,7 +39,7 @@ class App extends Component {
         let person = null;
 
         if (showPersons) {
-            person = <Persons persons={persons} />;
+            person = <Persons persons={persons} deleteP={this.deletePerson}/>;
         }
 
         return (
