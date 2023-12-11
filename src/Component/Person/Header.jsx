@@ -7,15 +7,10 @@ const Header = () => {
     return (
         <SimpleContext.Consumer>
             {context => (
-                <div>
-                   
-                        <h2>{context.state.apptitle}</h2>
+                <div>                
+                    <h2>{context.state.apptitle}</h2>
                         
-                        <p>تعداد اشخاص{" "}
-                       
-                       {context.state.persons.length}
-                   
-                   نفر می باشد</p>
+                    <p>تعداد اشخاص{" "} {context.state.persons.length}نفر می باشد</p>
                         
                   
                 </div>

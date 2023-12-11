@@ -4,13 +4,13 @@ import contextApi from "./SimpleContext";
 const Person = () => {
     return (
         <contextApi.Consumer>
-            {context =>{
+            {context =>(
                 <div  style={{cursor:'pointer'}}>
                     <p>{`${context.state.firstname} ${context.state.lastname}`}</p>
-                    <button onClick={context.deletePerson(context.state.person.id)}>delete</button>
+                    <button onClick={context.deletePerson(context.state.persons.id)}>delete</button>
                 </div>
-            }
-            }
+            
+            )}
         </contextApi.Consumer>
         
     );

@@ -5,14 +5,14 @@ import contextApi from "./SimpleContext";
 const Persons = () => {
     return (
         <contextApi.Consumer>
-            {(context)=>{
+            {context=>(
                <div>
                {context.state.persons.map(person => (
                    <Person/>
                ))}
            </div>
-            }
-            }    
+            
+            )}    
         </contextApi.Consumer>
         
     );
