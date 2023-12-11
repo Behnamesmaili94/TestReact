@@ -8,7 +8,8 @@ class App extends Component {
             { id:1, firstname: "ایمان", lastname: "مدائنی" },
             { id:2, firstname: "سجاد", lastname: "باقرزاده" }
         ],
-        showPersons: false
+        showPersons: false,
+        apptitle:"UserManagment",
     };
 
     handleShowPerson = () => {
