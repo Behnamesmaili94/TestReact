@@ -1,18 +1,20 @@
 import React from "react";
 import Person from "./Person";
+import contextApi from "./SimpleContext";
 
-const Persons = ({ persons , deleteP}) => {
+const Persons = () => {
     return (
-        <div>
-            {persons.map(person => (
-                <Person
-                    key={person.id}
-                    firstname={person.firstname}
-                    lastname={person.lastname}
-                    deleted={()=>{deleteP(person.id)}}
-                />
-            ))}
-        </div>
+        <contextApi.Consumer>
+            {(context)=>{
+               <div>
+               {context.state.persons.map(person => (
+                   <Person/>
+               ))}
+           </div>
+            }
+            }    
+        </contextApi.Consumer>
+        
     );
 };
 

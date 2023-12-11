@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Persons from "./Component/Person/Persons";
-
+import contextApi from "./Component/Person/SimpleContext";
+import Header from "./Component/Person/Header";
 class App extends Component {
     state = {
         persons: [
@@ -27,10 +28,7 @@ class App extends Component {
         const { persons, showPersons } = this.state;
         // InlineStyle text-align
         // <div style={{ textAlign: "center" }}>
-        const styles = {
-            textAlign: "center"
-        };
-
+      
         const bottonStyle = {
             padding: "1em",
             fontFamily: "BYekan",
@@ -40,20 +38,23 @@ class App extends Component {
         let person = null;
 
         if (showPersons) {
-            person = <Persons persons={persons} deleteP={this.deletePerson}/>;
+            person = <Persons/>;
         }
-
+        const styles = {
+            textAlign: "center"
+        };
+        
         return (
-            <div style={styles}>
-                <h2>مدیریت کننده اشخاص</h2>
-                <h4>تعداد اشخاص {persons.length} نفر می باشد</h4>
+            <contextApi.Provider value={{ state : this.state, handleShowPerson : this.handleShowPerson, deletePerson : this.deletePerson}}>
+                <div style={styles}>
+                    <Header/> 
+                    {person}
 
-                {person}
-
-                <button onClick={this.handleShowPerson} style={bottonStyle}>
-                    نمایش اشخاص
-                </button>
-            </div>
+                    <button onClick={this.handleShowPerson} style={bottonStyle}>
+                        نمایش اشخاص
+                    </button>
+                </div>
+            </contextApi.Provider>
         );
     }
 }

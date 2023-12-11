@@ -4,7 +4,7 @@ const contextApi= createContext({
     state:{},
     handleShowPerson : () => {},
     deletePerson: () => {},
-    apptitle:"",
+    apptitle:""
 
 })
 
