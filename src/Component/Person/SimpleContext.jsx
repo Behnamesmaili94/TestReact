@@ -1,5 +1,11 @@
 import React,{createContext} from 'react';
 
-createContext({
-    
+const contextApi= createContext({
+    state:{},
+    handleShowPerson : () => {},
+    deletePerson: () => {},
+    apptitle:"",
+
 })
+
+export default contextApi;
