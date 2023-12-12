@@ -1,18 +1,12 @@
 import React from "react";
-import contextApi from "./SimpleContext";
 
-const Person = () => {
+const Person = ({lastname,firstname,deleted}) => {
     return (
-        <contextApi.Consumer>
-            {context =>(
-                <div  style={{cursor:'pointer'}}>
-                    <p>{`${context.state.firstname} ${context.state.lastname}`}</p>
-                    <button onClick={context.deletePerson(context.state.persons.id)}>delete</button>
-                </div>
-            
-            )}
-        </contextApi.Consumer>
-        
+        <div style={{ cursor: 'pointer' }}>
+            <p>{`${firstname} ${lastname}`}</p>
+            <button onClick={deleted}>delete</button>
+        </div>
+
     );
 };
 
