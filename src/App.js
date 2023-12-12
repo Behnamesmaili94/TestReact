@@ -5,9 +5,9 @@ import Header from "./Component/Person/Header";
 class App extends Component {
     state = {
         persons: [
-            { id:0, firstname: "یونس", lastname: "قربانی" },
-            { id:1, firstname: "ایمان", lastname: "مدائنی" },
-            { id:2, firstname: "سجاد", lastname: "باقرزاده" }
+            { id:0, firstname: "بهنام", lastname: "اسماعیلی" },
+            { id:1, firstname: "بهزاد", lastname: "قربانی" },
+            { id:2, firstname: "سجاد", lastname: "سلیمانی" }
         ],
         showPersons: false,
         apptitle:"UserManagment",
