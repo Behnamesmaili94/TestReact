@@ -12,7 +12,8 @@ class App extends Component {
         showPersons: false,
         apptitle:"UserManagment",
     };
-
+    static contextType = contextApi
+    
     handleShowPerson = () => {
         this.setState({ showPersons: !this.state.showPersons });
         // console.log(this.state.showPersons);
