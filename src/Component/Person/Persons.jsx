@@ -8,7 +8,7 @@ const Persons = () => {
             {context=>(
                <div>
                {context.state.persons.map(person => (
-                   <Person/>
+                   <Person key={persons.id} fullname={person.firstname+person.lastname} deleted={context.deletePerson(person.id)}/>
                ))}
            </div>
             
