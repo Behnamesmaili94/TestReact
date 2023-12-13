@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Alert, Badge } from "react-bootstrap";
 import SimpleContext from "./../../context/SimpleContext";
 
-const Header = () => {
+const Header = ({appTitle}) => {
     const context = useContext(SimpleContext);
 
-    const { persons, appTitle } = context.state;
+    const { persons } = context;
 
     let badgeStyle = "";
 
