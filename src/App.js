@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {useState } from "react";
 import { Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -7,115 +7,104 @@ import Header from "./components/common/Header";
 import SimpleContext from "./context/SimpleContext";
 import NewPerson from "./components/Person/NewPerson";
 
-class App extends Component {
-    state = {
-        persons: [],
-        person: "",
-        showPersons: true,
-        appTitle: "مدیریت کننده اشخاص"
+const App = () => {
+
+const [getPersons,setPersons] = useState([])
+const [getSinglePerson,setSingelPerson] = useState("")
+const [getShowPerson,setShowPerson] = useState(true)
+
+const handleShowPerson = () => {
+    setShowPerson(!getShowPerson );
+
+};
+
+const handleDeletePerson = id => {
+    const persons = [...getPersons];
+    const filteredPersons = persons.filter(p => p.id !== id); //! = =
+    setPersons(filteredPersons);
+
+    const personIndex = persons.findIndex(p => p.id === id);
+    const person = persons[personIndex];
+
+    toast.error(`${person.fullname} با موفقیت حذف شد`, {
+        position: "top-right",
+        closeOnClick: true
+    });
+};
+
+const handleNameChange = (event, id) => {
+    const { persons: allPersons } = this.state;
+
+    const personIndex = allPersons.findIndex(p => p.id === id);
+    const person = allPersons[personIndex];
+    person.fullname = event.target.value;
+
+    const persons = [...allPersons];
+
+    persons[personIndex] = person;
+    setPersons(persons);
+};
+
+const handleNewPerson = () => {
+    const persons = [...getPersons];
+    const person = {
+        id: Math.floor(Math.random() * 1000),
+        fullname: getSinglePerson
     };
 
-    static contextType = SimpleContext;
-    //this.context
-
-    handleShowPerson = () => {
-        this.setState({ showPersons: !this.state.showPersons });
-    };
-
-    handleDeletePerson = id => {
-        const persons = [...this.state.persons];
-        const filteredPersons = persons.filter(p => p.id !== id); //! = =
-        this.setState({ persons: filteredPersons });
-
-        const personIndex = persons.findIndex(p => p.id === id);
-        const person = persons[personIndex];
-
-        toast.error(`${person.fullname} با موفقیت حذف شد`, {
-            position: "top-right",
+    if (person.fullname !== "" && person.fullname !== " ") {
+        persons.push(person);
+        setPersons(persons);
+        setSingelPerson("")
+        toast.success("شخصی با موفقیت اضافه شد.", {
+            position: "bottom-right",
+            closeButton: true,
             closeOnClick: true
         });
-    };
+    }
+};
 
-    handleNameChange = (event, id) => {
-        const { persons: allPersons } = this.state;
+const setPerson = event => {
+    setSingelPerson(event.target.value);
+}
 
-        const personIndex = allPersons.findIndex(p => p.id === id);
-        const person = allPersons[personIndex];
-        person.fullname = event.target.value;
-        console.log(event);
-
-        const persons = [...allPersons];
-
-        persons[personIndex] = person;
-        this.setState({ persons });
-    };
-
-    handleNewPerson = () => {
-        const persons = [...this.state.persons];
-        const person = {
-            id: Math.floor(Math.random() * 1000),
-            fullname: this.state.person
-        };
-
-        if (person.fullname !== "" && person.fullname !== " ") {
-            persons.push(person);
-            this.setState({ persons, person: "" });
-
-            toast.success("شخصی با موفقیت اضافه شد.", {
-                position: "bottom-right",
-                closeButton: true,
-                closeOnClick: true
-            });
-        }
-    };
-
-    setPerson = event => {
-        this.setState({ person: event.target.value });
-    };
-
-    render() {
-        const { persons, showPersons } = this.state;
 
         let person = null;
 
-        if (showPersons) {
+        if (getShowPerson) {
             person = (
-                <Persons
-                // persons={persons}
-                // personDelete={this.handleDeletePerson}
-                // personChange={this.handleNameChange}
-                />
+                <Persons/>
             );
         }
 
-        return (
-            <SimpleContext.Provider
-                value={{
-                    state: this.state,
-                    handleDeletePerson: this.handleDeletePerson,
-                    handleNameChange: this.handleNameChange,
-                    handleNewPerson: this.handleNewPerson,
-                    setPerson: this.setPerson
-                }}
+return (
+    <SimpleContext.Provider
+        value={{
+            persons : getPersons,
+            person : getSinglePerson,
+            handleDeletePerson: handleDeletePerson,
+            handleNameChange: handleNameChange,
+            handleNewPerson:handleNewPerson,
+            setPerson: setPerson
+        }}
+    >
+        <div className="rtl text-center">
+            <Header appTitle="مدیریت کاربران" />
+
+            <NewPerson />
+
+            <Button
+                onClick={handleShowPerson}
+                variant={getShowPerson ? "info" : "danger"}
             >
-                <div className="rtl text-center">
-                    <Header />
+                نمایش اشخاص
+            </Button>
 
-                    <NewPerson />
-
-                    <Button
-                        onClick={this.handleShowPerson}
-                        variant={showPersons ? "info" : "danger"}
-                    >
-                        نمایش اشخاص
-                    </Button>
-
-                    {person}
-                    <ToastContainer />
-                </div>
-            </SimpleContext.Provider>
-        );
-    }
+            {person}
+            <ToastContainer />
+        </div>
+    </SimpleContext.Provider>
+)
 }
 
 export default App;
