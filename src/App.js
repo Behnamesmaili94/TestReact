@@ -14,8 +14,12 @@ const App = () => {
     const [getShowPerson, setShowPerson] = useState(true)
 
     useEffect(()=>{
-        
-        return ()=>{console.log(getPersons)}
+        const time =()=>{
+            setTimeout(() => {
+                console.log("time out on")
+            }, 1000);
+        }
+        return ()=>{clearTimeout(time)}
     },[getPersons])
 
     useEffect(() => {
