@@ -33,7 +33,7 @@ const handleDeletePerson = id => {
 };
 
 const handleNameChange = (event, id) => {
-    const { persons: allPersons } = this.state;
+    const allPersons = getPersons
 
     const personIndex = allPersons.findIndex(p => p.id === id);
     const person = allPersons[personIndex];
