@@ -12,9 +12,15 @@ const App = () => {
     const [getPersons, setPersons] = useState([])
     const [getSinglePerson, setSingelPerson] = useState("")
     const [getShowPerson, setShowPerson] = useState(true)
+
+    useEffect(()=>{
+        
+        return ()=>{console.log(getPersons)}
+    },[getPersons])
+
     useEffect(() => {
-        console.log("create app")
-    })
+        console.log(getSinglePerson)
+    },[getSinglePerson])
 
     const handleShowPerson = () => {
         setShowPerson(!getShowPerson);
